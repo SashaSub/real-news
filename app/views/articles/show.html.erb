@@ -1,0 +1,19 @@
+<%= render @article %>
+
+<p class="fs-3">Our readers thoughts: </p>
+<% if @article.comments.any? %>
+<%= render @article.comments %>
+<% else %>      
+      <p class="fw-bold">No comments yet. Be the first!</p>
+<% end %>
+<% if user_signed_in? %>
+  <h2>Add a comment:</h2>
+  <%= render 'comments/form' %>
+<% else %>  
+    <%= link_to "Sign in to share your thoughts!", new_user_session_path, class:"btn btn-info my-3" %> 
+  
+<% end %>
+
+<div>  
+  <%= link_to "Back to articles", articles_path, class:"btn btn-success" %>  
+</div>

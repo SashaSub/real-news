@@ -1,0 +1,21 @@
+
+<% if user_signed_in? %>
+  <% if current_user.role == "admin" %>
+  <div class="d-grid col-4 mb-5 mx-auto">
+    <%= link_to "Add real news", new_article_path, class: "btn btn-primary fs-3" %>
+  </div>
+  <% end %>
+<% end %>
+<h1 class="mb-5 text-center text-danger">Read the real news here</h1>
+<div id="articles">  
+  <div class="row">
+    <% @articles.each do |article| %>
+      <div class="col-4">      
+          <%= render article %>
+          <p>
+            <%= link_to "Show this article", article, class: "btn btn-secondary" %>
+          </p>      
+      </div>
+    <% end %>
+  </div>
+</div>
